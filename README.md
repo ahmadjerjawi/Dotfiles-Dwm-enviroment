@@ -6,10 +6,10 @@ This is a customized version of dwm-flexipatch with added functionality for dwmb
 
 
 ## Things  I Did
-Nemo file manager
-St my terminal
-dmenu is i can say so much things
-dwmblocks as my status bar
+- Nemo file manager
+- St my terminal
+- dmenu is i can say so much things
+- dwmblocks as my status bar
 and i am planning to add webage using surf to act as a config manager without the need of so complex one
 
 ## Features
@@ -28,7 +28,7 @@ https://github.com/ahmadjerjawi/Dotfiles-Dwm-envirmoent/assets/72747814/a1f7c7d9
 
 
 ## Shortucts and keybinds 
- stored at the guide by pressing Modkey+F1
+ stored at the guide by Reading the f config at dwm-flexipatch
  and if you need to add change and if i forgot just read the source code and you know what you are doing 
 ## Getting Started
 
