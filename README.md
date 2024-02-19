@@ -18,13 +18,12 @@ and i am planning to add webage using surf to act as a config manager without th
 - Custom scripts for enhanced system management and productivity
 - Additional files for personalization and convenience
 - Included icons and fonts to enrich the user interface
-  ![pic-full-240218-2237-31](https://github.com/ahmadjerjawi/Dotfiles-Dwm-environment/assets/72747814/552c3dda-5234-4d76-ad49-6ea968cdd990)
-![pic-full-240218-2257-37](https://github.com/ahmadjerjawi/Dotfiles-Dwm-environment/assets/72747814/e9637456-74ac-405a-81e3-c3e68b914e71)
+
+![pic-full-240219-2014-56](https://github.com/ahmadjerjawi/Dotfiles-Dwm-envirmoent/assets/72747814/448ad4a0-446a-47c7-9811-5ebb95cf1878)
+![pic-full-240219-2019-42](https://github.com/ahmadjerjawi/Dotfiles-Dwm-envirmoent/assets/72747814/a3cd0886-c6d7-4bdd-9668-d72aef32bcd4)
 
 
-
-https://github.com/ahmadjerjawi/Dotfiles-Dwm-environment/assets/72747814/f8f0a05e-d1cb-4a3a-bb44-a258652482f9
-
+https://github.com/ahmadjerjawi/Dotfiles-Dwm-envirmoent/assets/72747814/a1f7c7d9-a770-4542-b7ab-fffe417daf8b
 
 
 
