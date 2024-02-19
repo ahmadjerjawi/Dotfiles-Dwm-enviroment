@@ -1,0 +1,13 @@
+#!/bin/sh
+
+myLayouts="us ara"
+currentLayout="$(sb-kbselect)"
+nextLayout="$(echo "$myLayouts" | awk -v currentLayout="$currentLayout" '{for(i=1;i<=NF;i++)if($i==currentLayout)print $(i+1)}')"
+
+# If the next layout is missing, we're at the end of the list
+# and should start over
+[ -z $nextLayout ] && nextLayout=$(echo "$myLayouts" | cut -d ' ' -f1)
+
+setxkbmap "$nextLayout"
+
+pkill -RTMIN+30 "${STATUSBAR:-dwmblocks}"

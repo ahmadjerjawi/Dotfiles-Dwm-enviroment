@@ -1,0 +1,14 @@
+# NetSurf cookies file.
+#
+# Lines starting with a '#' are comments, blank lines are ignored.
+#
+# All lines prior to "Version:	102" are discarded.
+#
+# Version	Domain	Domain from Set-Cookie	Path	Path from Set-Cookie	Secure	HTTP-Only	Expires	Last used	No destroy	Name	Value	Value was quoted	Scheme	URL	Comment
+Version:	102
+0	.youtube.com	1	/	1	1	1	1719477295	1703962085	0	VISITOR_INFO1_LIVE	idB04SfEcqk	0	unused	unused	
+0	.youtube.com	1	/	1	1	1	1719477295	1703962085	0	VISITOR_PRIVACY_METADATA	CgJJTBIEGgAgEQ%3D%3D	0	unused	unused	
+0	4ddig.tenorshare.com	0	/	1	0	1	1704008050	1703925251	0	__cflb	0H28vTnsmZRERARmj9rgetyEAdpv4vfBuhdUSMeik5S	0	https	https://4ddig.tenorshare.com/windows-fix/fix-google-chrome-flickering.html	
+0	.google.com	1	/	1	1	0	1706517286	1703925295	0	1P_JAR	2023-12-30-08	0	unused	unused	
+0	.google.com	1	/	1	1	1	1719477230	1703925295	0	AEC	Ackid1QL6kAxPFhcb1uzLeVErQNMrVv-PwauA2F8KJFvo2NUeUkj7yl3koY	0	unused	unused	
+0	.google.com	1	/	1	0	1	1719736429	1703925295	0	NID	511=gc3sKZQ3W96q_ssthUNhCR_upKCOMyz8tF3glKHrnLBt0LIzRKVdga8deTrX2uXSl5npN3vKifUHRfFCA46YcDDwoygIeFn5HJWrImPhFSUzCnG4kxIwRk04X8qb8K8vnyitFE9XAh0A7dcDTDX8VQKTkoKD8xPSOHQ8-jg2Rqg	0	unused	unused	

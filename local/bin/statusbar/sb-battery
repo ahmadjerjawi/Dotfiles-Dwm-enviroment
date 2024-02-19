@@ -1,0 +1,54 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	3) notify-send "  This is battery module you can guess from it's name charging is the electricity and battery can changes how much you have battery";;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+# Loop through all attached batteries and format the info
+for battery in /sys/class/power_supply/BAT?*; do
+	# If non-first battery, print a space separator.
+	[ -n "${capacity+x}" ] && printf " "
+	# Sets up the status and capacity
+	case "$(cat "$battery/status")" in
+		"Full") status=" " ;;
+		"Discharging") status="" ;;
+		"Charging") status=" " ;;
+		"Not charging") status="" ;;
+		"Unknown") status="" ;;
+	esac
+	capacity=$(cat "$battery/capacity")
+    if [ $capacity = "99" ]; then
+        capacity=100;
+    fi
+
+	# Prints the info
+	# For debian change env to /usr/bin/bash and remove whitespaces from prints...
+	if [[ $capacity > 99  ]]; then
+               printf "  %s%s%d%%" "$warn" "$status" "$capacity"; unset warn
+        elif [[ $status = " " ]]; then
+               printf "%s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+        elif (( $capacity > 85)); then
+                printf " %s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+	elif (( $capacity > 60)); then
+		printf " %s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+	elif (( $capacity > 30 )); then
+		printf " %s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+	else
+		if (( $capacity < 25 )); then
+			while true; do
+				printf "Emoji1 %s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+				sleep 1
+				printf "\r"
+				sleep 1
+				printf "Emoji2 %s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+				sleep 1
+				printf "\r"
+				sleep 1
+			done
+		else
+			printf " %s%s%d%%" "$status" "$warn" "$capacity"; unset warn
+		fi
+	fi
+
+done && exit 0
