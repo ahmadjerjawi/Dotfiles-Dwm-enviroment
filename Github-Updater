@@ -1,21 +1,42 @@
 #!/bin/bash
 
-# Copy contents of .local to local file
-cp -r ~/.local local
-
-# Copy contents of .config to config file
-cp -r ~/.config config
-
-# Initialize a git repository if not already initialized
-if [ ! -d ".git" ]; then
-    git init
+# Check if local file exists, if not, create it
+if [ ! -f local ]; then
+    touch local
 fi
 
-# Add locala and config files to staging area
+# Check if config file exists, if not, create it
+if [ ! -f config ]; then
+    touch config
+fi
+
+# Retrieve specified files from ~/.local/
+mkdir -p local
+cp ~/.local/src local/ -r
+cp ~/.local/bin local/ -r
+cp ~/.local/share/bg local/share
+cp ~/.local/share/larbs local/share
+
+# Retrieve specified files from ~/.config/
+mkdir -p config
+cp ~/.config/mpv config/
+cp ~/.config/ncmpcpp config/
+cp ~/.config/nvim config/
+cp ~/.config/pinentry config/
+cp ~/.config/pipewire config/
+cp ~/.config/pulse config/
+cp ~/.config/python config/
+cp ~/.config/shell config/
+cp ~/.config/wal config/
+cp ~/.config/wget config/
+cp ~/.config/x11 config/
+cp ~/.config/zathura config/
+
+# Add changes to git
 git add local config
 
-# Commit changes with a generic commit message
-git commit -m "Update locala and config files"
+# Make a git commit
+git commit -m "Updated local and config files"
 
-# Optionally, you can push the changes to a remote repository if configured
-# git push origin master
+# Push changes to remote repository
+git push origin master
