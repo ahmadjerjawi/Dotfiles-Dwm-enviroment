@@ -25,12 +25,8 @@ config.h:
 patches.h:
 	cp patches.def.h $@
 
-LDFLAGS += -lX11
-
 dwm: ${OBJ}
-	${CC} -o $@ ${OBJ} -L/usr/X11R6/lib -lX11 -lX11-xcb -lXinerama -lfontconfig -lXft -lXrender -lxcb -lxcb-util -lxcb-res
-
-
+	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 ifdef YAJLLIBS
 dwm-msg:

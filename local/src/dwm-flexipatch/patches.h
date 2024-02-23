@@ -250,7 +250,7 @@
  * when including this patch.
  * https://dwm.suckless.org/patches/alpha/
  */
-#define BAR_ALPHA_PATCH 0
+#define BAR_ALPHA_PATCH 1
 
 /* This patch introduces alternative tags which can be switched on the fly for the
  * sole purpose of providing visual aid.
@@ -504,7 +504,7 @@
  *
  * https://dwm.suckless.org/patches/bidi/
  */
-#define BIDI_PATCH 0
+#define BIDI_PATCH 1
 
 /* This patch adds an iscentered rule to automatically center clients on the current monitor.
  * This patch takes precedence over centeredwindowname, alwayscenter and fancybar patches.
@@ -1042,7 +1042,7 @@
  */
 #define SELECTIVEFAKEFULLSCREEN_PATCH 0
 
-/* Allows restarting dwm without the dependency of an external script.
+/* Allows restarting dwm w/ithout the dependency of an external script.
  * https://dwm.suckless.org/patches/selfrestart/
  */
 #define SELFRESTART_PATCH 0

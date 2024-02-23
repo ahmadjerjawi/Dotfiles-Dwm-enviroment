@@ -6,10 +6,10 @@
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
-static const unsigned int borderpx       = 2;   /* border pixel of windows */
-static const int corner_radius           = 6;
-#else
 static const unsigned int borderpx       = 1;   /* border pixel of windows */
+static const int corner_radius           = 5;
+#else
+static const unsigned int borderpx       = 0;   /* border pixel of windows */
 #endif // ROUNDED_CORNERS_PATCH
 #if BAR_BORDER_PATCH
 /* This allows the bar border size to be explicitly set separately from borderpx.

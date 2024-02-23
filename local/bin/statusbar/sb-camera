@@ -41,7 +41,7 @@ check_camera() {
 # Handle click events
 case $BLOCK_BUTTON in
   1) kill_camera_processes ;;  # Left click
+  6) "$TERMINAL" -e "$EDITOR" "$0" ;;
   3) notify-send "This is the camera module. When it detects an app using the camera, it displays an emoji. Left click to kill the process." ;;
 esac
-
 check_camera
