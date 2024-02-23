@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Copy contents of .local to local file
+cp -r ~/.local local
+
+# Copy contents of .config to config file
+cp -r ~/.config config
+
+# Initialize a git repository if not already initialized
+if [ ! -d ".git" ]; then
+    git init
+fi
+
+# Add locala and config files to staging area
+git add local config
+
+# Commit changes with a generic commit message
+git commit -m "Update locala and config files"
+
+# Optionally, you can push the changes to a remote repository if configured
+# git push origin master
