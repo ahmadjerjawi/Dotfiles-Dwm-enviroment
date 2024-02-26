@@ -511,12 +511,15 @@ static const Rule rules[] = {
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
 	{ .instance = "sppulsemixer", .scratchkey = '3', .isfloating = 1 },
+	{ .title = "Picture in picture", .isfloating = 1 },
+
 	#elif SCRATCHPADS_PATCH
+	        { .title = "Picture in picture", .isfloating = 1 },
 	{ .instance = "spterm", .scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
+	{ .instance = "Picture in picture", .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
 	{ .instance = "sppulsemixer", .scratchkey = '3', .isfloating = 1 },
-
 	{ .class = "Gimp", .tags = 1 << 8 },
 	{ .class = TERMCLASS, .isterminal = 1 },
 	{ .title = "Event Tester", .noswallow = 1 },
