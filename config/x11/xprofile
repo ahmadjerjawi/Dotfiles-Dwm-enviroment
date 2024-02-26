@@ -15,3 +15,6 @@ done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
 [ -n "$xrdbpid" ] && wait "$xrdbpid"
+export XDG_SESSION_DESKTOP=dwm
+export XDG_CURRENT_DESKTOP=dwm
+export DESKTOP_SESSION=dwm
