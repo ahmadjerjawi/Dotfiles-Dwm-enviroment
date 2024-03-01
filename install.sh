@@ -23,4 +23,4 @@ done
 sudo pacman -Rns librewolf newsboat abook lf neomutt
 
 # Install specified programs
-sudo pacman -S chromium nemo ttf-nerd-fonts-symbols
+sudo pacman -S chromium nemo ttf-nerd-fonts-symbols atuin
