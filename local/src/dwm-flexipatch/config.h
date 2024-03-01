@@ -517,7 +517,6 @@ static const Rule rules[] = {
 	        { .title = "Picture in picture", .isfloating = 1 },
 	{ .instance = "spterm", .scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
-	{ .instance = "Picture in picture", .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
 	{ .instance = "sppulsemixer", .scratchkey = '3', .isfloating = 1 },
 	{ .class = "Gimp", .tags = 1 << 8 },
