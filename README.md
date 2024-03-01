@@ -2,7 +2,7 @@
 
 # My dwm-flexipatch fork and other app
 
-This is a customized version of dwm-flexipatch with added functionality for dwmblocks, additional scripts, files, icons, and font.
+This is a customized version of dwm-flexipatch with added functionality for dwmblocks, additional scripts, files, icons, and fonts.
 
 
 ## Things  I Did
@@ -11,6 +11,9 @@ This is a customized version of dwm-flexipatch with added functionality for dwmb
 - dmenu is i can say so much things
 - dwmblocks as my status bar
 and i am planning to add webage using surf to act as a config manager without the need of so complex one
+- dwm supports rtl languages but not St
+- new history atuin instead of the just shell history you need to setup it
+- fzf for file fidning in terminal 
 
 ## Features
 
