@@ -511,10 +511,10 @@ static const Rule rules[] = {
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
 	{ .instance = "sppulsemixer", .scratchkey = '3', .isfloating = 1 },
-	{ .title = "Picture in picture", .isfloating = 1 },
+	{ .title = "Picture in picture",.scratchkey = '4',.isfloating = 1 },
 
 	#elif SCRATCHPADS_PATCH
-	        { .title = "Picture in picture", .isfloating = 1 },
+	        { .title = "Picture in picture",.scratchkey = '4', .isfloating = 1 },
 	{ .instance = "spterm", .scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
@@ -1101,6 +1101,7 @@ static const Button buttons[] = {
 	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
 	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
 	{ ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 6} },
+	{ ClkStatusText,        MODKEY,      Button1,        sigstatusbar,   {.i = 7} },
 #endif
 	{ ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINL " -e nvim ~/.local/src/dwmblocks/config.h") },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
