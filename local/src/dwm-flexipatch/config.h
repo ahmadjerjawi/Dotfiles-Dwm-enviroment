@@ -922,10 +922,13 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
+	/*changinging keyboard layout*/
         { ShiftMask,		XK_Alt_L,	spawn,	SHCMD("cycle-keyboard") },
 	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
+
 	{ MODKEY,			XK_grave,	spawn,	{.v = (const char*[]){ "dmenuunicode", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_grave,	togglescratch,	SHCMD("") }, */
+	/*move between tags */
 	TAGKEYS(			XK_1,		0)
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
@@ -937,22 +940,28 @@ static const Key keys[] = {
 	TAGKEYS(			XK_9,		8)
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
+	/*volume*/
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("xbacklight -dec 15") },
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
+	/*brightness*/
+	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("xbacklight -dec 15") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("xbacklight -inc 15") },
+	/*shutdownn , sleep, lock*/
 	{ MODKEY,			XK_BackSpace,	spawn,		{.v = (const char*[]){ "sysact", NULL } } },
-	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		{.v = (const char*[]){ "sysact", NULL } } },
-
+	/*changing tabs*/
 	{ MODKEY,			XK_Tab,		view,		{0} },
-	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
+	/*exiting apps*/
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_q,		spawn,		{.v = (const char*[]){ "sysact", NULL } } },
+	/*browser*/
 	{ MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY|ShiftMask,		XK_w,   	togglescratch,  {.v = spcmd4 } },
+	/*openning file manager*/
 	{ MODKEY,                        XK_e,          spawn,  SHCMD("nemo") },
 	{ MODKEY|ShiftMask,             XK_e,           spawn,  SHCMD("sudo nemo") },
+	/*task manager*/
 	{ MODKEY,		  	XK_r,		spawn,		{.v = (const char*[]){ TERMINL, "-e","sudo" ,"htop", NULL } } },
+	/*chaning layout for windows */
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,			XK_y,		setlayout,	{.v = &layouts[2]} }, /* spiral */
@@ -961,26 +970,34 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
+	/*master controller numbers*/
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
+	/*video player controlls*/
 	{ MODKEY,			XK_p,			spawn,		{.v = (const char*[]){ "mpc", "toggle", NULL } } },
 	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft,		spawn,		{.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
 	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		{.v = (const char*[]){ "mpc", "seek", "-60", NULL } } },
 	{ MODKEY,			XK_bracketright,	spawn,		{.v = (const char*[]){ "mpc", "seek", "+10", NULL } } },
 	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		{.v = (const char*[]){ "mpc", "seek", "+60", NULL } } },
+
 	{ MODKEY,			XK_backslash,		view,		{0} },
-	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
+	/*gapps toggler*/
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
+	/*sticky*/
 	{ MODKEY,			XK_s,		togglesticky,	{0} },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
+	/*dmenu runner*/
 	{ MODKEY,			XK_d,		spawn,          {.v = (const char*[]){ "dmenu_run", NULL } } },
-	{ MODKEY|ShiftMask,		XK_d,		spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
+	/*fucking read full screen*/
 	{ MODKEY,			XK_f,		togglefullscreen,	{0} },
+	/*my defualt layout mostly*/
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
+	/*tags chnager but with keyboard*/
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_g,		shifttag,	{ .i = -1 } },
+	/*yaping just test it yourself change the windows size to the master*/
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
@@ -996,10 +1013,12 @@ static const Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_c,		spawn,		{.v = (const char*[]){ TERMINL, "-e", "profanity", NULL } } },
-	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_c,		spawn,		SHCMD("discord") },
+	 { MODKEY|ShiftMask,		XK_c,		spawn,		 {.v = (const char*[]){ "dmenu_configer", NULL } } },
+
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
+		 { MODKEY|ShiftMask,		XK_b,		spawn,		 {.v = (const char*[]){ "dmenu_bluetooth", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_n,		spawn,		{.v = (const char*[]){ TERMINL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
 	{ MODKEY,			XK_m,		spawn,		{.v = (const char*[]){ TERMINL, "-e", "ncmpcpp", NULL } } },
@@ -1018,14 +1037,16 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Page_Up,	shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_Page_Down,	shiftview,	{ .i = +1 } },
 	{ MODKEY|ShiftMask,		XK_Page_Down,	shifttag,	{ .i = +1 } },
-	{ MODKEY,			XK_Insert,	spawn,		SHCMD("xdotool type $(grep -v '^#' ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
+	{ MODKEY,			XK_Insert,	spawn,		SHCMD("xdotool type $(grep -v '^#' ~/ | dmenu -i -l 50 | cut -d' ' -f1)") },
 
-	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura - ") },
-	{ MODKEY,			XK_F2,		spawn,		{.v = (const char*[]){ "tutorialvids", NULL } } },
+	{ MODKEY,			XK_F1,		spawn,		SHCMD("groff -mom ~/.local/src/dwm-flexipatch/tutorial.mom -Tpdf | zathura - ") },
+	{ MODKEY,			XK_F2,		spawn,		{.v = (const char*[]){ "dmenu_moder", NULL } } },
 	{ MODKEY,			XK_F3,		spawn,		{.v = (const char*[]){ "displayselect", NULL } } },
+
 	{ MODKEY,                      XK_F4,           togglescratch, {.v = spcmd3 } },
 	{ MODKEY,			XK_F6,		spawn,		{.v = (const char*[]){ "torcli", NULL } } },
-	{ MODKEY,			XK_F8,		spawn,		{.v = (const char*[]){ "mailsync", NULL } } },
+
+
 	{ MODKEY,			XK_F9,		spawn,		{.v = (const char*[]){ "mounter", NULL } } },
 	{ MODKEY,			XK_F10,		spawn,		{.v = (const char*[]){ "unmounter", NULL } } },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },

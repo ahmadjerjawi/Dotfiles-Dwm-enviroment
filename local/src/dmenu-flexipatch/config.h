@@ -151,3 +151,4 @@ static unsigned int border_width = 0;
  */
 static int use_prefix = 1;
 #endif // PREFIXCOMPLETION_PATCH
+
