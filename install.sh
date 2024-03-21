@@ -26,6 +26,8 @@ for prog in dwm dwmblocks st dmenu; do
   cd ~/.local/src/$prog || continue
   sudo -u "$SUDO_USER" make clean install
 done
+# make zsh deafult shell
+chsh -s /bin/zsh "$SUDO_USER"
 
 # Install programs listed in progs.csv
 if [ ! -f /tmp/progs.csv ]; then
