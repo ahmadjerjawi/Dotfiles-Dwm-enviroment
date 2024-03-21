@@ -52,9 +52,9 @@ the apps that removed in the changes scirpt will remove them
 sudo install.sh
 ```
 3. Restart / Renew Dwm
-4. ```bash
+```bash
    reboot
-   ```
+```
 
 ## Note 
 If you want to change the keybindings you should also change the keybindings in the scripts becuase they also uses the same binings becuase i didnt know how to implement scatching pads into dwmblocks so i used xdotools to emulate the key pressing
