@@ -1,6 +1,8 @@
 #!/bin/sh
-
+# Add / Remove / Chnage keyboard layout from the line udner
 myLayouts="us ara"
+
+
 currentLayout="$(sb-kbselect)"
 nextLayout="$(echo "$myLayouts" | awk -v currentLayout="$currentLayout" '{for(i=1;i<=NF;i++)if($i==currentLayout)print $(i+1)}')"
 

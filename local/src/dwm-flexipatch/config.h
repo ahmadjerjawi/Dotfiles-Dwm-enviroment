@@ -402,6 +402,7 @@ static const char *layoutmenu_cmd = "layoutmenu.sh";
 #if COOL_AUTOSTART_PATCH
 static const char *const autostart[] = {
     "sh", "-c", "while :; do dwmblocks; sleep 5; done", NULL,
+    "sh", "-c", "while :; do clipmenud; sleep 5; done", NULL,
     NULL
 };
 
@@ -511,10 +512,10 @@ static const Rule rules[] = {
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
 	{ .instance = "sppulsemixer", .scratchkey = '3', .isfloating = 1 },
-	{ .title = "Picture in picture",.scratchkey = '4',.isfloating = 1 },
+	{ .title = "Picture in picture",.scratchkey = 's',.isfloating = 1 },
 
 	#elif SCRATCHPADS_PATCH
-	        { .title = "Picture in picture",.scratchkey = '4', .isfloating = 1 },
+	        { .title = "Picture in picture",.scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spterm", .scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
@@ -683,27 +684,28 @@ static const int scrollargs[][2] = {
 static const Layout layouts[] = {
 	/* symbol     arrange function, { nmaster, nstack, layout, master axis, stack axis, secondary stack axis, symbol func } */
 	{ "[]=",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
- 	{ "><>",      NULL,             {0} },    /* no layout function means floating behavior */
-	{ "[M]",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL } }, // monocle
-	{ "|||",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
+	{ "TTT",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
+	{ ":::",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL } }, // gappless grid
 	{ ">M>",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // floating master
 	{ "[D]",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL } }, // deck
-	{ "TTT",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
-	{ "===",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
+		{ "[M]",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL } }, // monocle
 	{ "|M|",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmaster
 	{ "-M-",      flextile,         { -1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL } }, // centeredmaster horiz
-	{ ":::",      flextile,         { -1, -1, NO_SPLIT, GAPPLESSGRID, GAPPLESSGRID, 0, NULL } }, // gappless grid
+	{ "><>",      NULL,             {0} },    /* no layout function means floating behavior */
+		{ "|||",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
+	{ "===",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
+
 	{ "[\\]",     flextile,         { -1, -1, NO_SPLIT, DWINDLE, DWINDLE, 0, NULL } }, // fibonacci dwindle
 	{ "(@)",      flextile,         { -1, -1, NO_SPLIT, SPIRAL, SPIRAL, 0, NULL } }, // fibonacci spiral
 	{ "[T]",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TATAMI, 0, NULL } }, // tatami mats
 	#if TILE_LAYOUT
 	{ "[]=",      tile,             {0} },
 	#endif
-	#if MONOCLE_LAYOUT
-	{ "[M]",      monocle,          {0} },
-	#endif
 	#if BSTACK_LAYOUT
 	{ "TTT",      bstack,           {0} },
+	#endif
+	#if MONOCLE_LAYOUT
+	{ "[M]",      monocle,          {0} },
 	#endif
 	#if BSTACKHORIZ_LAYOUT
 	{ "===",      bstackhoriz,      {0} },
@@ -747,12 +749,12 @@ static const Layout layouts[] = {
 	#if TILE_LAYOUT
 	{ "[]=",      tile },    /* first entry is default */
 	#endif
+	#if BSTACK_LAYOUT
+	{ "TTT",      bstack },
+	#endif
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	#if MONOCLE_LAYOUT
 	{ "[M]",      monocle },
-	#endif
-	#if BSTACK_LAYOUT
-	{ "TTT",      bstack },
 	#endif
 	#if BSTACKHORIZ_LAYOUT
 	{ "===",      bstackhoriz },
@@ -924,6 +926,7 @@ static const Key keys[] = {
 	STACKKEYS(MODKEY|ShiftMask,                push)
 	/*changinging keyboard layout*/
         { ShiftMask,		XK_Alt_L,	spawn,	SHCMD("cycle-keyboard") },
+	        { MODKEY|ShiftMask,		XK_v,	spawn,	{.v = (const char*[]){ "clipmenu", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
 
 	{ MODKEY,			XK_grave,	spawn,	{.v = (const char*[]){ "dmenuunicode", NULL } } },
@@ -952,7 +955,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/*exiting apps*/
 	{ MODKEY,			XK_q,		killclient,	{0} },
-	{ MODKEY|ShiftMask,		XK_q,		spawn,		{.v = (const char*[]){ "sysact", NULL } } },
+	{ MODKEY|ShiftMask,		XK_q,		spawn,		{.v = (const char*[]){ "t", NULL } } },
 	/*browser*/
 	{ MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY|ShiftMask,		XK_w,   	togglescratch,  {.v = spcmd4 } },
@@ -961,6 +964,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_e,           spawn,  SHCMD("sudo nemo") },
 	/*task manager*/
 	{ MODKEY,		  	XK_r,		spawn,		{.v = (const char*[]){ TERMINL, "-e","sudo" ,"htop", NULL } } },
+	/*Reset dwm session*/
+	{ MODKEY|ShiftMask,		  	XK_r,		spawn,		SHCMD("reset_session") },
 	/*chaning layout for windows */
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
@@ -1013,7 +1018,6 @@ static const Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_c,		spawn,		SHCMD("discord") },
 	 { MODKEY|ShiftMask,		XK_c,		spawn,		 {.v = (const char*[]){ "dmenu_configer", NULL } } },
 
 	/* V is automatically bound above in STACKKEYS */
