@@ -16,6 +16,8 @@ cp -r ~/.local/src local/
 cp -r ~/.local/bin local/
 cp -r ~/.local/share/bg local/share
 cp -r ~/.local/share/larbs local/share
+cp ~/.zshrc local/
+cp ~/.zprofile local/
 
 # Retrieve specified files from ~/.config/
 mkdir -p config
@@ -34,6 +36,7 @@ cp -r ~/.config/zathura config/
 
 # Add changes to git
 git add local config
+
 # Make a git commit
 git commit -m "Updated local and config files"
 
