@@ -955,7 +955,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/*exiting apps*/
 	{ MODKEY,			XK_q,		killclient,	{0} },
-	{ MODKEY|ShiftMask,		XK_q,		spawn,		{.v = (const char*[]){ "t", NULL } } },
+	{ MODKEY|ShiftMask,		XK_q,		spawn,		{.v = (const char*[]){ "sysact", NULL } } },
 	/*browser*/
 	{ MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY|ShiftMask,		XK_w,   	togglescratch,  {.v = spcmd4 } },
