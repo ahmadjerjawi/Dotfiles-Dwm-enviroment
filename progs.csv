@@ -42,6 +42,7 @@ go
 gparted
 gpick
 grub
+glib2
 icoutils
 imagemagick
 intel-ucode
@@ -145,6 +146,7 @@ vim
 vulkan-intel
 winetricks
 wireplumber
+webkit2gtk
 xcape
 xclip
 xcompmgr
