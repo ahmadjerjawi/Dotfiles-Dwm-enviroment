@@ -74,7 +74,7 @@
  *   - The text of the menu items is for display only. Name them however you want.
  * https://dwm.suckless.org/patches/layoutmenu/
  */
-#define BAR_LAYOUTMENU_PATCH 0
+#define BAR_LAYOUTMENU_PATCH 1
 
 /* Show layout symbol in bar */
 #define BAR_LTSYMBOL_PATCH 1
@@ -454,7 +454,7 @@
 /* This patch allows windows to be resized with its aspect ratio remaining constant.
  * https://dwm.suckless.org/patches/aspectresize/
  */
-#define ASPECTRESIZE_PATCH 0
+#define ASPECTRESIZE_PATCH 1
 
 /* This patch adds new clients above the selected client, instead of always
  * becoming the new master. This behaviour is known from Xmonad.
