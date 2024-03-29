@@ -16,12 +16,14 @@ cp -r ~/.local/src local/
 cp -r ~/.local/bin local/
 cp -r ~/.local/share/bg local/share
 cp -r ~/.local/share/larbs local/share
-cp ~/.zshrc local/
-cp ~/.zprofile local/
+cp -r ~/.local/share/nemo local/share
+cp ~/.zshrc ~/Dotfiles-Dwm-envirmoent/.zshrc
+cp ~/.zprofile ~/Dotfiles-Dwm-envirmoent/.zprofile
 
 # Retrieve specified files from ~/.config/
 mkdir -p config
 cp -r ~/.config/mpv config/
+cp -r ~/.config/dunst config/
 cp -r ~/.config/ncmpcpp config/
 cp -r ~/.config/nvim config/
 cp -r ~/.config/pinentry config/
@@ -29,7 +31,6 @@ cp -r ~/.config/pipewire config/
 cp -r ~/.config/pulse config/
 cp -r ~/.config/python config/
 cp -r ~/.config/shell config/
-cp -r ~/.config/wal config/
 cp -r ~/.config/wget config/
 cp -r ~/.config/x11 config/
 cp -r ~/.config/zathura config/
