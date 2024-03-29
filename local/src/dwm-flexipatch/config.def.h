@@ -3,7 +3,6 @@
 #define TERMINL "st"
 #define TERMCLASS "St"
 #define BROWSER "chromium"
-#define FILE_MANAGER "nemo"
 
 /* appearance */
 #if ROUNDED_CORNERS_PATCH
@@ -964,8 +963,8 @@ static const Key keys[] = {
 	{ MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY|ShiftMask,		XK_w,   	togglescratch,  {.v = spcmd4 } },
 	/*openning file manager*/
-	{ MODKEY,                        XK_e,          spawn,  {.v = (const char*[]){ FILE_MANAGER, NULL } } },
-	{ MODKEY|ShiftMask,             XK_e,           spawn,  {.v = (const char*[]){ TERMINL, "-e","sudo" , FILE_MANAGER, NULL } } },
+	{ MODKEY,                        XK_e,          spawn,  SHCMD("nemo") },
+	{ MODKEY|ShiftMask,             XK_e,           spawn,  SHCMD("sudo nemo") },
 	/*task manager*/
 	{ MODKEY,		  	XK_r,		spawn,		{.v = (const char*[]){ TERMINL, "-e","sudo" ,"htop", NULL } } },
 	/*Reset dwm session*/

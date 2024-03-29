@@ -21,12 +21,19 @@ get_bluetooth() {
     fi
 }
 
+# Function to get battery level using hcitool
+get_battery_level() {
+    MAC_ADDRESS=$(bluetoothctl info | grep "Device Address" | awk '{print $3}')
+    BATTERY_LEVEL=$(hcitool -i hci0 lecc $MAC_ADDRESS | grep "Battery level" | awk '{print $3}')
+    echo $BATTERY_LEVEL
+}
+
 # Handle click events
 case $BLOCK_BUTTON in
   1) # Left click
     # Get the name and battery level of the connected device
     DEVICE_NAME=$(bluetoothctl info | grep "Name: " | cut -d ' ' -f 2-)
-    BATTERY_LEVEL=$(bluetoothctl info | grep "Battery Level: " | awk '{print $3}')
+    BATTERY_LEVEL=$(get_battery_level)
     if [ -n "$DEVICE_NAME" ]; then
         notify-send "Device Name: $DEVICE_NAME" "Battery Level: $BATTERY_LEVEL%"
     else
@@ -34,7 +41,7 @@ case $BLOCK_BUTTON in
     fi
     ;;
   3) # Right click
-    notify-send "This is the Bluetooth module. When left clicked, it shows the device name and battery level. If not connected, it shows the Bluetooth status."
+    notify-send "The Bluetooth module. When left clicked, it shows the device name and battery level. If not connected, it shows the Bluetooth status."
     ;;
   6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
   7) # Signal 7 received (e.g., scroll lock pressed)

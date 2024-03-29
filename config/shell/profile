@@ -5,6 +5,7 @@
 
 # Add all directories in `~/.local/bin` to $PATH
 export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
+export PATH="$PATH:$(find ~/.npm/bin -type d | paste -sd ':' -)"
 
 unsetopt PROMPT_SP 2>/dev/null
 
@@ -77,7 +78,6 @@ export ATUIN_NOBIND="true"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 # Bind Atuin to up arrow + Shift
-bindkey '^[[A' atuin-up-search
 bindkey '^[[1;2A' atuin-up-search
 
 # Switch escape and caps if tty and no passwd required:
