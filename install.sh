@@ -16,6 +16,10 @@ export TERM=ansi
 sudo -u "$SUDO_USER" git clone --depth 1 "$dotfiles_repo" /tmp/dotfiles || exit 1
 cd /tmp/dotfiles || exit 1
 
+# Move .zshrc and .zprofile to ~/
+mv .zshrc ~/
+mv .zprofile ~/
+
 # Install local and config files
 mv local/* "$HOME/.local/"
 mv config/* "$HOME/.config/"
