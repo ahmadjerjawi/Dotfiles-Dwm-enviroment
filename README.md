@@ -49,7 +49,7 @@ git clone "https://github.com/ahmadjerjawi/Dotfiles-Dwm-environment.git"
 the apps that removed in the changes scirpt will remove them
 2. Run install.sh
 ```bash
-sudo install.sh
+sudo -e install.sh
 ```
 3. Restart / Renew Dwm
 ```bash
