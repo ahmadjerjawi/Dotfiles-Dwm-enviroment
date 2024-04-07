@@ -15,7 +15,7 @@ mkdir -p local
 cp -r ~/.local/src local/
 cp -r ~/.local/bin local/
 cp -r ~/.local/share/bg local/share
-cp -r ~/.local/share/larbs local/share
+cp -r ~/.local/share/chars local/share
 cp -r ~/.local/share/nemo local/share
 cp ~/.zshrc ~/Dotfiles-Dwm-envirmoent/.zshrc
 cp ~/.zprofile ~/Dotfiles-Dwm-envirmoent/.zprofile
