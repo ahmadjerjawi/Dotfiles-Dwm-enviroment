@@ -1,5 +1,6 @@
-/* See LICENSE file for copyright and license details. */
-/* Constants */
+/* See LICENSE file for copyright and license details.
+* test1
+* Constants */
 #define TERMINL "st"
 #define TERMCLASS "St"
 #define BROWSER "chromium"
@@ -951,8 +952,8 @@ static const Key keys[] = {
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	/*brightness*/
-	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("xbacklight -dec 15") },
-	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("xbacklight -inc 15") },
+	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("light -U 5") },
+	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("light -A 5") },
 	/*shutdownn , sleep, lock*/
 	{ MODKEY,			XK_BackSpace,	spawn,		{.v = (const char*[]){ "sysact", NULL } } },
 	/*changing tabs*/
