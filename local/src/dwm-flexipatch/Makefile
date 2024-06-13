@@ -5,6 +5,7 @@ include config.mk
 
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
+USER_HOME := $(shell sudo -u $(SUDO_USER) sh -c 'echo $$HOME')
 
 # FreeBSD users, prefix all ifdef, else and endif statements with a . for this to work (e.g. .ifdef)
 
@@ -62,7 +63,9 @@ endif
 	mkdir -p ${DESTDIR}${PREFIX}/share/xsessions
 	test -f ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop || cp -n dwm.desktop ${DESTDIR}${PREFIX}/share/xsessions
 	chmod 644 ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
-
+	mkdir -p ${USER_HOME}/.wiki
+	cp -r wiki.page ${USER_HOME}/.wiki
+	chmod -R 755 ${USER_HOME}/.wiki
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1\
