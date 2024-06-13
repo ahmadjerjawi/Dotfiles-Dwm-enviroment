@@ -7,8 +7,8 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Define variables environment
-dotfiles_repo="https://github.com/ahmadjerjawi/Dotfiles-Dwm-envirmoent.git/"
-progs_csv="https://raw.githubusercontent.com/ahmadjerjawi/Dotfiles-Dwm-envirmoent/main/progs.csv"
+dotfiles_repo="https://github.com/ahmadjerjawi/Dotfiles-Dwm-enviroment.git/"
+progs_csv="https://raw.githubusercontent.com/ahmadjerjawi/Dotfiles-Dwm-enviroment/main/progs.csv"
 aur_helper="yay"  # You can change this to your preferred AUR helper
 export TERM=ansi
 
