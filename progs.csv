@@ -7,7 +7,6 @@ base
 base-devel
 bat
 bc
-bettercap
 blueman
 bluez
 bluez-runit
@@ -16,7 +15,6 @@ bmon
 brightnessctl
 calcurse
 cdrtools
-chromium
 clipmenu
 conky
 cups
@@ -76,9 +74,7 @@ libvirt
 linux
 linux-firmware
 linux-headers
-lutris
 lxappearance
-lxdm
 mailcap
 maim
 man-db
@@ -126,11 +122,9 @@ qt5-translations
 runit
 slock
 socat
-speedtest-cli
-steam
+surf
 tesseract-data-ara
 tint2
-tor
 transmission-gtk
 tslib
 ttf-dejavu
