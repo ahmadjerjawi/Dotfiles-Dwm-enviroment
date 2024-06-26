@@ -3,7 +3,7 @@
 * Constants */
 #define TERMINL "st"
 #define TERMCLASS "St"
-#define BROWSER "chromium"
+#define BROWSER "librewolf"
 #define FILE_MANAGER "nemo"
 
 /* appearance */
@@ -419,6 +419,7 @@ static const char *scratchpadcmd[] = {"s", "st", "-n", "spterm", NULL};
 static const char *spcmd2[] = {"2",TERMINL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static const char *spcmd3[] = {"3", TERMINL , "-n", "sppulsemixer", "-g", "120x34", "-e", "pulsemixer", NULL };
 static const char *spcmd4[] = {"4",TERMINL, "-n", "spnmtui", "-g", "120x34", "-e", "nmtui", NULL };
+static const char *spcmd5[] = {"5", TERMINL , "-n", "spbmon", "-g", "60x20", "-e", "bmom", NULL };
 #elif SCRATCHPADS_PATCH
 
 static Sp scratchpads[] = {
@@ -427,6 +428,8 @@ static Sp scratchpads[] = {
 	{"spcalc",      spcmd2},
 	{"sppulsemixer", spcmd3},
 	{"spnmtui" , spcmd4}
+	{"spbmon" , spcmd5}
+
 };
 
 
@@ -517,10 +520,13 @@ static const Rule rules[] = {
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
 	{ .instance = "sppulsemixer", .scratchkey = '3', .isfloating = 1 },
-	{ .title = "Picture in picture",.scratchkey = 's',.isfloating = 1 },
+	{ .title = "Picture-in-picture",.scratchkey = 's',.isfloating = 1 },
+	 { .title = "bmon",.scratchkey = '5', .isfloating = 1 },
+
 
 	#elif SCRATCHPADS_PATCH
-	        { .title = "Picture in picture",.scratchkey = 's', .isfloating = 1 },
+	{ .title = "bmon",.scratchkey = '5', .isfloating = 1 },
+	{ .title = "Picture-in-picture",.scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spterm", .scratchkey = 's', .isfloating = 1 },
 	{ .instance = "spcalc", .scratchkey = '2', .isfloating = 1 },
 	{ .instance = "spnmtui", .scratchkey = '4', .isfloating = 1 },
@@ -952,8 +958,8 @@ static const Key keys[] = {
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	/*brightness*/
-	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("light -U 5") },
-	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("light -A 5") },
+	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("xbacklight -dec 1") },
+	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("xbacklight -inc 1") },
 	/*shutdownn , sleep, lock*/
 	{ MODKEY,			XK_BackSpace,	spawn,		{.v = (const char*[]){ "sysact", NULL } } },
 	/*changing tabs*/

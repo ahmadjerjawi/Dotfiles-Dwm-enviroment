@@ -14,7 +14,7 @@ get_ethernet() {
 
 # Handle click events
 case $BLOCK_BUTTON in
-  1) xdotool key super+shift+w ;;  # Left click
+  1) xdotool key super+shift+w ;;
   3) notify-send "󰈀 This is the Etherent module when left clicked gets nmtui
  right click this shows you if it's connected to cable or not";;
   6) "$TERMINAL" -e "$EDITOR" "$0" ;;

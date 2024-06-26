@@ -1,27 +1,15 @@
 #!/bin/bash
-
-# Change directory to user's home and .wiki directory
 cd "$HOME/.wiki/wiki.page" || { echo "Directory $HOME/.wiki/wiki.page not found"; exit 1; }
-
-# Function to find and extract port from the log
 find_port() {
     local log_file="$HOME/.wiki/wiki.page/npm_output.log"
     local port=$(grep -oE 'localhost:[0-9]+' "$log_file" | cut -d ':' -f 2 | tail -n 1)
     echo "$port"
 }
-
-# Function to clean up if script exits
 cleanup() {
     rm -f "$HOME/.wiki/wiki.page/npm_output.log"
 }
-
-# Trap exit signal to clean up
 trap cleanup EXIT
-
-# Start npm run preview in the background (or npm run dev / npm run build)
 npm run preview > "$HOME/.wiki/wiki.page/npm_output.log" 2>&1 &
-
-# Loop until port is found
 while true; do
     if [ -f "$HOME/.wiki/wiki.page/npm_output.log" ]; then
         port=$(find_port)
@@ -31,6 +19,4 @@ while true; do
     fi
     sleep 1
 done
-
-# Open the website in surf
 surf "http://localhost:$port"
