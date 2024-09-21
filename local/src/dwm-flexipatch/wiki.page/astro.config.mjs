@@ -1,7 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
+
+export default defineConfig({
+  site: 'https://ahmadjerjawi.github.io',
+  base: '/wiki.github.io',
+})
+
+
 export default defineConfig({
 	integrations: [
 		starlight({

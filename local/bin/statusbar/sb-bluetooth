@@ -12,7 +12,6 @@ get_bluetooth() {
         # Bluetooth is ON. Now check if any device is connected.
         BLUETOOTH_CONNECTED=$(bluetoothctl info | grep "Connected: " | awk '{print $2}')
         if [ "$BLUETOOTH_CONNECTED" = "yes" ]; then
-            # A device is connected. Print the connected emoji and battery level.
             MAC_ADDRESS=$(bluetoothctl info | grep "Device" | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
             DEVICE_NAME=$(bluetoothctl info $MAC_ADDRESS | grep "Name: " | cut -d ' ' -f 2-)
             BATTERY_LEVEL=$(get_battery_level $MAC_ADDRESS)
@@ -50,7 +49,7 @@ case $BLOCK_BUTTON in
     BATTERY_LEVEL=$(get_battery_level $MAC_ADDRESS)
 
     if [ -n "$DEVICE_NAME" ]; then
-        notify-send "Device Name: $DEVICE_NAME" "Battery Level: $BATTERY_LEVEL%"
+        notify-send "Device Name: $DEVICE_NAME" "Battery Level: $BATTERY_LEVEL"
     else
         notify-send "No device connected"
     fi

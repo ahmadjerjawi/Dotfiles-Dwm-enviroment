@@ -64,11 +64,21 @@ endif
 	test -f ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop || cp -n dwm.desktop ${DESTDIR}${PREFIX}/share/xsessions
 	chmod 644 ${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
 	mkdir -p ${USER_HOME}/.wiki
-	cp -r wiki.page ${USER_HOME}/.wiki
+	# Check if there are any differences before copying wiki files
+	@for file in wiki.page/*; do \
+		if [ ! -f ${USER_HOME}/.wiki/$$(basename $$file) ]; then \
+			cp -r $$file ${USER_HOME}/.wiki/; \
+		elif ! diff $$file ${USER_HOME}/.wiki/$$(basename $$file) > /dev/null 2>&1; then \
+			mv -f $$file ${USER_HOME}/.wiki/; \
+		fi \
+	done
 	chmod -R 755 ${USER_HOME}/.wiki
+
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1\
 		${DESTDIR}${PREFIX}/share/xsessions/dwm.desktop
+	# Remove the .wiki directory from the user's home
+	rm -rf ${USER_HOME}/.wiki
 
 .PHONY: all clean dist install uninstall

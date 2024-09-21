@@ -406,9 +406,7 @@ static const char *const autostart[] = {
     "sh", "-c", "while :; do dwmblocks; sleep 5; done", NULL,
     "sh", "-c", "while :; do clipmenud; sleep 5; done", NULL,
     "sh", "-c", "while :; do kdeconnect-cli; sleep 5; done", NULL,
-
-
-    NULL
+    "sh", "-c", "mpv --no-video ~/.local/bin/Startup.mp3", NULL
 };
 
 #endif // COOL_AUTOSTART_PATCH
@@ -1035,7 +1033,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_b,		togglebar,	{0} },
 		 { MODKEY|ShiftMask,		XK_b,		spawn,		 {.v = (const char*[]){ "dmenu_bluetooth", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_n,		spawn,		{.v = (const char*[]){ TERMINL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
+	{ MODKEY,			XK_n,		spawn,		{.v = (const char*[]){ "obsidian" , NULL } } },
 	{ MODKEY,			XK_m,		spawn,		{.v = (const char*[]){ TERMINL, "-e", "ncmpcpp", NULL } } },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_comma,	spawn,		{.v = (const char*[]){ "mpc", "prev", NULL } } },
