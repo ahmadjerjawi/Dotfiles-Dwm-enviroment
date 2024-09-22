@@ -3,8 +3,8 @@
 
 # My dwm-flexipatch fork and other app
 
-This is a customized version of dwm-flexipatch with added functionality for dwmblocks, additional scripts, files, icons, and fonts.
-
+This is a customized version of dwm-flexipatch with added functionality for dwmblocks, additional scripts, files, icons, and fontsp.
+[My wiki for the system](https://ahmadjerjawi.github.io/wiki/)
 
 ## Things  I Did
 - Nemo file manager
